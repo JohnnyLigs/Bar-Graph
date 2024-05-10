@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title align="center">Bar Graphs</title>
+  <h1>
+    Bar 
+    graphs 
+  </h1>
+  <article><p>
+    Using the data in the <bold>"Percent Right" and "Percent Left" columns </bold>of our summary data table, i can make two bar graphs, one graph showing the percentage of people who were right-sided and one graph showing the percentage of people who were left-sided.
+
+    <aside>On the left side of each graph (the y-axis), we write a scale for the percentage of people from zero to 100%. On the bottom of the graph (the x-axis), write the dominance test categories (i.e., "Hand Dominance," "Foot Dominance," "Eye Dominance," and "Ear Dominance"). </aside>
+
+    </p></article>
+<style>
+  canvas {
+    border: 1px solid #000;
+  }
+</style>
+</head>
+<body>
+<canvas id="barGraph1" width="400" height="300"></canvas>
+<canvas id="barGraph2" width="400" height="300"></canvas>
+
+<script>
+  const canvas1 = document.getElementById('barGraph1');
+  const ctx1 = canvas1.getContext('2d');
+  
+  const sections1 = ['Hand Dom', 'Foot Dom', 'Eye Dom', 'Ear Dom'];
+  const values1 = [80, 80, 70, 70];
+  const colors1 = ['blue', 'green', 'red', 'orange'];
+  
+  const barWidth1 = 50;
+  const spacing1 = 20;
+  const startX1 = 50;
+  const startY1 = 250;
+  
+  // Scale for y-axis
+  for (let i = 0; i <= 100; i += 20) {
+    const y = startY1 - (i * 2); // Scale for better visualization
+    ctx1.fillText(i + '%', 10, y + 5);
+  }
+  
+  for (let i = 0; i < sections1.length; i++) {
+    const x = startX1 + i * (barWidth1 + spacing1);
+    const height = values1[i] * 2; // Scale for better visualization
+    const y = startY1 - height;
+    
+    ctx1.fillStyle = colors1[i];
+    ctx1.fillRect(x, y, barWidth1, height);
+    
+    ctx1.fillStyle = '#000';
+    ctx1.fillText(sections1[i], x, startY1 + 15);
+    ctx1.fillText(values1[i] + '%', x + 20, y - 10);
+  }
+  
+  const canvas2 = document.getElementById('barGraph2');
+  const ctx2 = canvas2.getContext('2d');
+  
+  const sections2 = ['Hand', 'Foot', 'Eye', 'Ear'];
+  const values2 = [20, 20, 30, 30];
+  const colors2 = ['blue', 'green', 'red', 'orange'];
+  
+  const barWidth2 = 50;
+  const spacing2 = 20;
+  const startX2 = 50;
+  const startY2 = 250;
+  
+  // Scale for y-axis
+  for (let i = 0; i <= 100; i += 20) {
+    const y = startY2 - (i * 2); // Scale for better visualization
+    ctx2.fillText(i + '%', 10, y + 5);
+  }
+  
+  for (let i = 0; i < sections2.length; i++) {
+    const x = startX2 + i * (barWidth2 + spacing2);
+    const height = values2[i] * 2; // Scale for better visualization
+    const y = startY2 - height;
+    
+    ctx2.fillStyle = colors2[i];
+    ctx2.fillRect(x, y, barWidth2, height);
+    
+    ctx2.fillStyle = '#000';
+    ctx2.fillText(sections2[i], x, startY2 + 15);
+    ctx2.fillText(values2[i] + '%', x + 20, y - 10);
+  }
+</script>
+</body>
+</html>
